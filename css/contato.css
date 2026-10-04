@@ -1,0 +1,64 @@
+/* css/contato.css - Estilos da Página de Contato */
+
+main {
+  padding: 2rem;
+  max-width: 600px;
+  /* Formulários ficam melhores mais estreitos */
+  margin: 0 auto;
+}
+
+/* Estilização do Formulário */
+form {
+  background-color: #FFFFFF;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #EAE3D2;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3rem;
+}
+
+form div {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #4A2E2B;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+  /* Garante que o padding não quebre a largura */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #8C2D19;
+}
+
+button[type="submit"] {
+  background-color: #8C2D19;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #661f10;
+}
