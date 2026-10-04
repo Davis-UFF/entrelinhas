@@ -1,63 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livraria Entrelinhas - Endereço e Horários</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/endereco.css">
+  <title>Endereço - Livraria Entrelinhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Livraria Entrelinhas</a>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li>
-          <a href="#">Explorar</a>
-          <ul>
-            <li><a href="servicos.html">Serviços & Café</a></li>
-            <li><a href="promocoes.html">Promoções do Mês</a></li>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Livraria Entrelinhas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Explorar</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="servicos.html">Serviços & Café</a></li>
+                <li><a class="dropdown-item" href="promocoes.html">Promoções do Mês</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="endereco.html">Endereço</a></li>
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
           </ul>
-        </li>
-        <li><a href="endereco.html">Endereço</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h1>Onde Estamos</h1>
-      <p>Venha nos fazer uma visita e conhecer nosso espaço físico.</p>
-    </section>
-  
-    <section>
-      <h2>Localização</h2>
-      <address>
-        Rua dos Livros, 123 - Centro, Niterói - RJ<br>
-        CEP: 24000-000
-      </address>
-    </section>
-    <section>
-      <h2>Horário de Funcionamento</h2>
-      <ul>
-        <li>Segunda a Sexta: 08:00 às 20:00</li>
-        <li>Sábados: 09:00 às 18:00</li>
-        <li>Domingos e Feriados: 10:00 às 15:00</li>
-      </ul>
-    </section>
-    
-    <section>
-      <h2>Como Chegar</h2>
-      <p>Estamos localizados a 5 minutos da estação de barcas de Niterói, com fácil acesso por linhas de ônibus locais.</p>
-    </section>
+    <div class="page-banner">
+      <h1>Endereço</h1>
+      <p>Localização, horário de funcionamento e como chegar</p>
+    </div>
+
+    <div class="page-content">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <section>
+            <h2>Onde Estamos</h2>
+            <p>
+              Rua das Letras, 123 - Centro<br>
+              Niterói - RJ, 24000-000
+            </p>
+          </section>
+
+          <section>
+            <h2>Horário de Funcionamento</h2>
+            <table class="table table-horarios">
+              <thead>
+                <tr>
+                  <th scope="col">Dia</th>
+                  <th scope="col">Horário</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Segunda a Sexta</td>
+                  <td>09h às 20h</td>
+                </tr>
+                <tr>
+                  <td>Sábado</td>
+                  <td>09h às 14h</td>
+                </tr>
+                <tr>
+                  <td>Domingo</td>
+                  <td>Fechado</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <div class="col-md-7">
+          <section>
+            <h2>Como Chegar</h2>
+            <div class="map-wrapper">
+              <iframe
+                src="https://www.google.com/maps?q=Niter%C3%B3i%2C%20RJ&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa de localização da Livraria Entrelinhas">
+              </iframe>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; 2026 Livraria Entrelinhas - Todos os direitos reservados.</p>
     <p>Desenvolvido para a disciplina de Programação Web - UFF</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+
 </body>
 </html>

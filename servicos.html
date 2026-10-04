@@ -1,61 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livraria Entrelinhas - Serviços & Café</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/servicos.css">
+  <title>Serviços & Café - Livraria Entrelinhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Livraria Entrelinhas</a>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li>
-          <a href="#">Explorar</a>
-          <ul>
-            <li><a href="servicos.html">Serviços & Café</a></li>
-            <li><a href="promocoes.html">Promoções do Mês</a></li>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Livraria Entrelinhas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Explorar</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="servicos.html">Serviços & Café</a></li>
+                <li><a class="dropdown-item" href="promocoes.html">Promoções do Mês</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="endereco.html">Endereço</a></li>
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
           </ul>
-        </li>
-        <li><a href="endereco.html">Endereço</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h1>Nossos Serviços</h1>
-      <p>Conheça tudo o que preparamos para tornar sua experiência literária completa.</p>
-    </section>
+    <div class="page-banner">
+      <h1>Serviços & Café</h1>
+      <p>Livros, encomendas, clube de leitura e um café literário à sua espera</p>
+    </div>
 
-    <section>
-      <article>
-        <h2>Venda e Encomenda de Livros</h2>
-        <p>Possuímos um acervo variado de literatura nacional e internacional. Caso não encontre o livro desejado, fazemos a
-          encomenda diretamente com a editora.</p>
-      </article>
-    
-      <article>
-        <h2>Clube do Livro</h2>
-        <p>Participação gratuita em encontros mensais para discussão de obras selecionadas pela nossa comunidade.</p>
-      </article>
-    
-      <article>
-        <h2>Café Literário</h2>
-        <p>Bebidas quentes, geladas e acompanhamentos preparados com grãos selecionados para tornar sua leitura ainda mais
-          agradável.</p>
-      </article>
-    </section>
+    <div class="page-content">
+      <section>
+        <div class="cards-grid">
+          <article class="card-destaque">
+            <h3>Venda de Livros</h3>
+            <p>Um acervo variado com literatura nacional e internacional, lançamentos e clássicos, sempre com a curadoria da nossa equipe.</p>
+          </article>
+
+          <article class="card-destaque">
+            <h3>Encomendas de Títulos</h3>
+            <p>Não achou o livro que procurava nas prateleiras? Encomendamos diretamente com as editoras e avisamos assim que chegar.</p>
+          </article>
+
+          <article class="card-destaque">
+            <h3>Clube de Leitura</h3>
+            <p>Encontros mensais para discutir uma obra escolhida pelo grupo, com direito a café e boas conversas.</p>
+          </article>
+
+          <article class="card-destaque">
+            <h3>Café Literário</h3>
+            <p>Um cantinho aconchegante para tomar um café artesanal enquanto lê, trabalha ou espera por um amigo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Quer aproveitar?</h2>
+        <p>Confira as promoções do mês ou venha nos visitar pessoalmente.</p>
+        <a class="btn-accent" href="promocoes.html">Ver Promoções</a>
+      </section>
+    </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; 2026 Livraria Entrelinhas - Todos os direitos reservados.</p>
     <p>Desenvolvido para a disciplina de Programação Web - UFF</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+
 </body>
 </html>
