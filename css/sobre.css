@@ -1,0 +1,23 @@
+/* css/sobre.css - Estilos da Página Sobre Nós */
+
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  /* Centraliza o conteúdo na tela */
+  line-height: 1.6;
+}
+
+main section {
+  margin-bottom: 3rem;
+}
+
+main section h1 {
+  border-bottom: 2px solid #8C2D19;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+main section h2 {
+  color: #8C2D19;
+}
