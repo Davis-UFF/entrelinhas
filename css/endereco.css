@@ -1,0 +1,32 @@
+/* css/endereco.css - Estilos da Página de Endereço */
+
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estiliza a tag semântica de endereço */
+address {
+  font-style: normal;
+  background-color: #EAE3D2;
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #4A2E2B;
+}
+
+/* Estiliza a lista de horários */
+ul {
+  background-color: #FFFFFF;
+  padding: 2rem 3rem;
+  border: 1px solid #EAE3D2;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+ul li {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
