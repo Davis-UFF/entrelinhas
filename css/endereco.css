@@ -1,5 +1,7 @@
 /* css/endereco.css - Estilos da Página de Endereço */
 
+/* css/endereco.css - Estilos da Página de Endereço */
+
 main {
   padding: 2rem;
   max-width: 800px;
@@ -17,8 +19,8 @@ address {
   border-left: 4px solid #4A2E2B;
 }
 
-/* Estiliza a lista de horários */
-ul {
+/* FIX: Adicionado 'main' antes do 'ul' para não afetar o menu de navegação no cabeçalho */
+main ul {
   background-color: #FFFFFF;
   padding: 2rem 3rem;
   border: 1px solid #EAE3D2;
@@ -26,7 +28,7 @@ ul {
   margin-bottom: 2rem;
 }
 
-ul li {
+main ul li {
   margin-bottom: 0.8rem;
   font-size: 1.1rem;
 }
