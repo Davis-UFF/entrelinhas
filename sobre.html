@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livraria Entrelinhas - Sobre Nós</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/sobre.css">
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Sobre - Livraria Entrelinhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header>
+  <header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">Livraria Entrelinhas</a>
-  
-        <!-- Botão sanduíche para celulares -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <a class="navbar-brand" href="index.html">Livraria Entrelinhas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Alternar navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
-        <div class="collapse navbar-collapse" id="menuPrincipal">
-          <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-  
-            <!-- Menu Dropdown -->
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="sobre.html">Sobre</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Explorar</a>
-              <ul class="dropdown-menu">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Explorar</a>
+              <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="servicos.html">Serviços & Café</a></li>
                 <li><a class="dropdown-item" href="promocoes.html">Promoções do Mês</a></li>
               </ul>
             </li>
-  
             <li class="nav-item"><a class="nav-link" href="endereco.html">Endereço</a></li>
             <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
           </ul>
@@ -44,32 +38,48 @@
   </header>
 
   <main>
-    <section>
-      <h1>Nossa História</h1>
-      <p>A Livraria Entrelinhas nasceu do sonho de criar um espaço aconchegante no coração do bairro, combinando a paixão
-        pelos livros com a tradição de um bom café.</p>
-    </section>
+    <div class="page-banner">
+      <h1>Sobre a Entrelinhas</h1>
+      <p>Nossa história, missão e o espaço de leitura que construímos</p>
+    </div>
 
-    <section>
-      <h2>Missão e Proposta</h2>
-      <p>Nosso objetivo é incentivar a leitura e oferecer um ambiente de convivência, trocas culturais e tranquilidade para
-        a comunidade local.</p>
-    </section>
-    
-    <section>
-      <h2>Espaço de Leitura e Café</h2>
-      <p>Contamos com poltronas confortáveis, mesas de estudo e um cardápio especial de cafés artesanais para acompanhar sua
-        leitura.</p>
-    </section>
+    <div class="page-content">
+      <section>
+        <h2>Nossa História</h2>
+        <p>
+          A Livraria Entrelinhas nasceu do sonho de unir dois prazeres simples: a leitura e um bom café.
+          Fundada por amantes de livros do bairro, a loja começou pequena, mas rapidamente ganhou o coração
+          da vizinhança ao se tornar um ponto de encontro para quem busca histórias — nas páginas e nas conversas.
+        </p>
+      </section>
+
+      <section>
+        <h2>Nossa Missão</h2>
+        <p>
+          Acreditamos que toda vizinhança merece um espaço para desacelerar, ler e trocar ideias. Nossa missão
+          é aproximar as pessoas dos livros, incentivar o hábito da leitura e fortalecer a cultura local através
+          de encontros, recomendações e um atendimento próximo e acolhedor.
+        </p>
+      </section>
+
+      <section>
+        <h2>Um Espaço para Conviver</h2>
+        <p>
+          Mais do que estantes cheias de livros, a Entrelinhas é um espaço de convivência: mesas para ler com
+          calma, café fresquinho e uma programação de eventos literários que acontece todo mês. Aqui, cada
+          visita é um convite para ficar um pouco mais.
+        </p>
+        <a class="btn-accent" href="servicos.html">Conheça Nossos Serviços</a>
+      </section>
+    </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; 2026 Livraria Entrelinhas - Todos os direitos reservados.</p>
     <p>Desenvolvido para a disciplina de Programação Web - UFF</p>
   </footer>
-
-  <!-- Bootstrap JS Bundle (Necessário para o menu Dropdown) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>

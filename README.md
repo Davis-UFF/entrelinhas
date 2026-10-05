@@ -27,7 +27,7 @@ Site institucional de uma livraria fictícia chamada **Livraria Entrelinhas**, u
 
 O site apresenta a livraria e reúne, de forma simples e organizada, as informações que um cliente precisa antes de visitar a loja: quem somos, o que oferecemos, as promoções do momento, onde estamos e como entrar em contato. A navegação é direta, com um menu para cada uma das páginas descritas abaixo.
 
-#### Páginas Previstas:
+#### Páginas do Site:
 
 | Página        | Conteúdo                                                                      |
 | :------------ | :---------------------------------------------------------------------------- |
@@ -42,3 +42,9 @@ O site apresenta a livraria e reúne, de forma simples e organizada, as informa�
 ### Tecnologias
 
 - **Front-end:** HTML, CSS, Bootstrap e JavaScript.
+
+---
+
+### Como Executar
+
+Basta abrir o arquivo `index.html` diretamente no navegador — não é necessário servidor, pois todos os caminhos são relativos e o Bootstrap é carregado via CDN.

@@ -1,23 +1,18 @@
-/* js/script.js - Interatividade e Validação */
+// Validação e feedback do formulário de contato (front-end apenas; o envio
+// real será processado pelo back-end Java/Servlet, ainda não implementado).
+const formContato = document.getElementById("formContato");
 
-document.addEventListener("DOMContentLoaded", function() {
-  
-  // Seleciona o formulário da página de contato (se ele existir na página atual)
-  const formContato = document.querySelector("form");
+if (formContato) {
+  formContato.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  if (formContato) {
-    formContato.addEventListener("submit", function(event) {
-      // Impede o envio padrão do formulário (que recarregaria a página)
-      event.preventDefault();
+    if (!formContato.checkValidity()) {
+      formContato.classList.add("was-validated");
+      return;
+    }
 
-      // Captura o nome digitado para personalizar a mensagem
-      const nomeDigitado = document.getElementById("nome").value;
-
-      // Exibe uma mensagem de sucesso simples na tela
-      alert(`Obrigado pelo contato, ${nomeDigitado}! Sua mensagem foi enviada com sucesso para a Livraria Entrelinhas.`);
-
-      // Limpa os campos do formulário após o envio
-      formContato.reset();
-    });
-  }
-});
+    document.getElementById("form-feedback").style.display = "block";
+    formContato.reset();
+    formContato.classList.remove("was-validated");
+  });
+}
