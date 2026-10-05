@@ -216,6 +216,62 @@ main {
   color: var(--color-cream);
 }
 
+.table-horarios tr.hoje td {
+  background-color: var(--color-bg-alt);
+  font-weight: 700;
+}
+
+.table-horarios tr.hoje td:first-child::after {
+  content: " (hoje)";
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Status de funcionamento ---------- */
+
+.status-loja {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+}
+
+/* Sem JavaScript o selo fica vazio: não exibe */
+.status-loja:empty {
+  display: none;
+}
+
+.status-loja::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.page-content .status-loja {
+  background-color: var(--color-bg-alt);
+}
+
+.status-loja.aberto::before {
+  background-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25);
+}
+
+.status-loja.fechado::before {
+  background-color: #b23b2a;
+}
+
+a.status-loja:hover {
+  color: var(--color-accent-dark);
+}
+
 /* ---------- Mapa ---------- */
 
 .map-wrapper {
