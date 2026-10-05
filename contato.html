@@ -49,19 +49,24 @@
           <form id="formContato" novalidate>
             <div class="mb-3">
               <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nome" required>
+              <input type="text" class="form-control" id="nome" name="nome" maxlength="100" required>
+              <div class="invalid-feedback">Informe seu nome.</div>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" required>
+              <input type="email" class="form-control" id="email" name="email" maxlength="120" required>
+              <div class="invalid-feedback">Informe um e-mail válido (ex.: nome@dominio.com).</div>
             </div>
             <div class="mb-3">
               <label for="assunto" class="form-label">Assunto</label>
-              <input type="text" class="form-control" id="assunto" name="assunto" required>
+              <input type="text" class="form-control" id="assunto" name="assunto" maxlength="100" required>
+              <div class="invalid-feedback">Informe o assunto da mensagem.</div>
             </div>
             <div class="mb-3">
               <label for="mensagem" class="form-label">Mensagem</label>
-              <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+              <textarea class="form-control" id="mensagem" name="mensagem" rows="5" maxlength="1000" required aria-describedby="contador-mensagem"></textarea>
+              <div class="invalid-feedback">Escreva sua mensagem.</div>
+              <div id="contador-mensagem" class="form-text text-end" aria-live="polite"></div>
             </div>
             <button type="submit" class="btn-accent" style="border:0; cursor:pointer;">Enviar Mensagem</button>
             <div id="form-feedback" class="alert alert-success mt-3" role="alert">
