@@ -7,7 +7,7 @@
 Links da entrega:
 
 * Aplicação em execução no PythonAnywhere: `PREENCHER_COM_O_LINK`
-* Código no GitHub: https://github.com/Davis-UFF/entrelinhas
+* Código no GitHub: https://github.com/pedroaraujosalgadolopes/entrelinhas
 
 ---
 
@@ -70,13 +70,13 @@ entrelinhas/
 │   ├── __init__.py        # create_app: config, logs, extensões, blueprints, handlers 404/500
 │   ├── extensions.py      # instâncias de db (SQLAlchemy) e csrf (CSRFProtect)
 │   ├── models.py          # Servico, Promocao, Mensagem, Encomenda, InscricaoClube
-│   ├── forms.py           # ContatoForm, EncomendaForm, ClubeForm
-│   ├── routes.py          # blueprint "main": rotas públicas
+│   ├── forms.py           # PessoaForm (base), ContatoForm, EncomendaForm, ClubeForm
+│   ├── routes.py          # blueprint "main": rotas públicas e tratar_form
 │   ├── admin.py           # blueprint "admin": painel com HTTP Basic
-│   ├── cli.py             # dados iniciais (popular) e comando `flask seed`
+│   ├── cli.py             # dados iniciais (popular)
 │   ├── templates/
 │   │   ├── base.html      # layout, navbar, mensagens flash, rodapé
-│   │   ├── _macros.html   # macros: campo de formulário e banner de página
+│   │   ├── _macros.html   # macros: campo de formulário, banner e tabela do admin
 │   │   ├── index.html, sobre.html, servicos.html, promocoes.html, endereco.html
 │   │   ├── contato.html, encomendas.html, clube.html
 │   │   ├── admin.html     # tabelas do painel
@@ -105,6 +105,15 @@ entrelinhas/
 | `Encomenda` | nome, email, telefone, titulo_livro, autor, observacoes, status | `/encomendas`, `/admin/` |
 | `InscricaoClube` | nome, email (único), genero_favorito | `/clube`, `/admin/` |
 
+### Forms
+
+| Form | Campos | Rota | Grava em |
+| :-- | :-- | :-- | :-- |
+| `PessoaForm` (base) | nome, email (sem espaços nas pontas, e-mail em minúsculas) | herdado pelos três abaixo | n/a |
+| `ContatoForm` | + assunto, texto (10 a 1000 caracteres) | `/contato` | `Mensagem` |
+| `EncomendaForm` | + telefone (opcional), titulo_livro, autor, observacoes (opcional) | `/encomendas` | `Encomenda` |
+| `ClubeForm` | + genero_favorito; `validate_email` recusa e-mail já inscrito | `/clube` | `InscricaoClube` |
+
 ### Rotas
 
 | Rota | Métodos | Descrição |
@@ -123,17 +132,17 @@ entrelinhas/
 
 O log é configurado em `create_app` e grava em `logs/app.log` (rotativo, 1 MB por arquivo, 3 backups) e no console. O nível vem de `LOG_LEVEL` no `.env`. São registrados:
 
-* cada requisição (método, caminho, status e tempo em ms), em nível DEBUG;
-* gravações no banco (INFO), falhas de gravação com traceback (ERROR) e rollback;
-* formulários inválidos com os erros de validação (DEBUG);
-* inscrição duplicada no clube, páginas 404 e tentativas negadas no admin (WARNING).
+* cada requisição (método, caminho e status), em nível DEBUG;
+* gravações no banco (INFO) e erros inesperados com traceback (ERROR, registrado pelo próprio Flask);
+* formulários inválidos com os erros de validação, inclusive e-mail duplicado no clube (DEBUG);
+* conflito de integridade ao gravar (com rollback), páginas 404 e tentativas negadas no admin (WARNING).
 
 ---
 
 ## 4. Como executar localmente
 
 ```bash
-git clone https://github.com/Davis-UFF/entrelinhas.git
+git clone https://github.com/pedroaraujosalgadolopes/entrelinhas.git
 cd entrelinhas
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
