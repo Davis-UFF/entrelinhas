@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% block title %}Sobre - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Sobre a Entrelinhas", "Nossa história, missão e o espaço de leitura que construímos") }}
+<div class="page-content">
+  <section>
+    <h2>Nossa História</h2>
+    <p>
+      A Livraria Entrelinhas nasceu do sonho de unir dois prazeres simples: a leitura e um bom café.
+      Fundada por amantes de livros do bairro, a loja começou pequena, mas rapidamente ganhou o coração
+      da vizinhança ao se tornar um ponto de encontro para quem busca histórias, nas páginas e nas conversas.
+    </p>
+  </section>
+  <section>
+    <h2>Nossa Missão</h2>
+    <p>
+      Acreditamos que toda vizinhança merece um espaço para desacelerar, ler e trocar ideias. Nossa missão
+      é aproximar as pessoas dos livros, incentivar o hábito da leitura e fortalecer a cultura local através
+      de encontros, recomendações e um atendimento próximo e acolhedor.
+    </p>
+  </section>
+  <section>
+    <h2>Um Espaço para Conviver</h2>
+    <p>
+      Mais do que estantes cheias de livros, a Entrelinhas é um espaço de convivência: mesas para ler com
+      calma, café fresquinho e uma programação de eventos literários que acontece todo mês. Aqui, cada
+      visita é um convite para ficar um pouco mais.
+    </p>
+    <a class="btn-accent" href="{{ url_for('main.servicos') }}">Conheça Nossos Serviços</a>
+  </section>
+</div>
+{% endblock %}

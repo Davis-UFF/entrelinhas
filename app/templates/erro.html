@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Erro {{ codigo }} - Livraria Entrelinhas{% endblock %}
+{% block content %}
+<div class="page-content text-center">
+  <h1>{{ codigo }}</h1>
+  <p>{{ mensagem }}</p>
+  <a class="btn-accent" href="{{ url_for('main.index') }}">Voltar ao início</a>
+</div>
+{% endblock %}

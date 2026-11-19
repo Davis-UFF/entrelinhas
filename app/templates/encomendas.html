@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, campo %}
+{% block title %}Encomendar um Livro - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Encomendar um Livro", "Não encontrou o título? Peça e avisamos quando chegar") }}
+<div class="page-content">
+  <form method="post" novalidate data-rascunho="encomenda">
+    {{ form.hidden_tag() }}
+    <div class="row">
+      <div class="col-md-6">{{ campo(form.nome) }}</div>
+      <div class="col-md-6">{{ campo(form.email) }}</div>
+    </div>
+    {{ campo(form.telefone) }}
+    <div class="row">
+      <div class="col-md-7">{{ campo(form.titulo_livro) }}</div>
+      <div class="col-md-5">{{ campo(form.autor) }}</div>
+    </div>
+    {{ campo(form.observacoes, rows=3) }}
+    <button type="submit" class="btn-accent border-0">Enviar Encomenda</button>
+  </form>
+</div>
+{% endblock %}

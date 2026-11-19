@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Livraria Entrelinhas - Início{% endblock %}
+{% block content %}
+<section id="apresentacao">
+  <h1>Um espaço acolhedor para os amantes da leitura</h1>
+  <p>Venha tomar um café artesanal enquanto escolhe sua próxima leitura na Livraria Entrelinhas.</p>
+  <a class="btn-accent" href="{{ url_for('main.servicos') }}">Conheça Nosso Espaço &amp; Livros</a>
+  <p class="mt-4 mb-0"><a class="status-loja" href="{{ url_for('main.endereco') }}" role="status"></a></p>
+</section>
+
+<section id="destaques">
+  <h2>O que você encontra aqui</h2>
+  <div class="cards-grid">
+    <article class="card-destaque">
+      <h3>Clube do Livro</h3>
+      <p>Encontros mensais para debater obras selecionadas acompanhados de um café fresquinho.</p>
+      <a href="{{ url_for('main.clube') }}">Participar &rarr;</a>
+    </article>
+    <article class="card-destaque">
+      <h3>Encomendas</h3>
+      <p>Não encontrou o título que procurava? Nós encomendamos diretamente com as editoras.</p>
+      <a href="{{ url_for('main.encomendas') }}">Fazer Encomenda &rarr;</a>
+    </article>
+    <article class="card-destaque">
+      <h3>Promoção do Mês</h3>
+      {% if promocoes %}
+        <p>{{ promocoes[0].titulo }}: {{ promocoes[0].descricao }}</p>
+      {% else %}
+        <p>Confira os combos de livros selecionados e cupons de desconto especiais.</p>
+      {% endif %}
+      <a href="{{ url_for('main.promocoes') }}">Ver Ofertas &rarr;</a>
+    </article>
+  </div>
+</section>
+
+<section id="sobre-resumo">
+  <h2>Sua livraria de bairro</h2>
+  <p>
+    A Livraria Entrelinhas nasce com a proposta de ser mais do que uma loja de livros: somos um ponto de encontro,
+    cultura e convivência local.
+  </p>
+  <a class="btn-accent" href="{{ url_for('main.sobre') }}">Conheça Nossa História</a>
+</section>
+{% endblock %}

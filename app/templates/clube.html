@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, campo %}
+{% block title %}Clube de Leitura - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Clube de Leitura", "Encontros mensais, café fresquinho e 15% de desconto para associados") }}
+<div class="page-content">
+  <p class="text-center mb-4">
+    {% if total == 0 %}Seja a primeira pessoa a entrar no clube!
+    {% elif total == 1 %}Já temos 1 leitor(a) inscrito(a).
+    {% else %}Já somos {{ total }} leitores inscritos.{% endif %}
+  </p>
+  <form method="post" novalidate data-rascunho="clube">
+    {{ form.hidden_tag() }}
+    {{ campo(form.nome) }}
+    {{ campo(form.email) }}
+    {{ campo(form.genero_favorito) }}
+    <button type="submit" class="btn-accent border-0">Quero Participar</button>
+  </form>
+</div>
+{% endblock %}

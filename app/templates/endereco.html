@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% block title %}Endereço - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Endereço", "Localização, horário de funcionamento e como chegar") }}
+<div class="page-content">
+  <div class="row g-4">
+    <div class="col-md-5">
+      <section>
+        <h2>Onde Estamos</h2>
+        <p>Rua das Letras, 123 - Centro<br>Niterói - RJ, 24000-000</p>
+      </section>
+      <section>
+        <h2>Horário de Funcionamento</h2>
+        <p><span class="status-loja" role="status"></span></p>
+        <table class="table table-horarios">
+          <thead><tr><th scope="col">Dia</th><th scope="col">Horário</th></tr></thead>
+          <tbody>
+            {% for h in horarios %}
+              <tr data-dias="{{ h.dias }}"><td>{{ h.rotulo }}</td><td>{{ h.horario }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <div class="col-md-7">
+      <section>
+        <h2>Como Chegar</h2>
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=Niter%C3%B3i%2C%20RJ&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de localização da Livraria Entrelinhas"></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}

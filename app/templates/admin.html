@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, tabela %}
+{% block title %}Painel - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Painel administrativo", "Registros gravados pelos formulários do site") }}
+<div class="page-content" style="max-width: 72rem;">
+  {% call(m) tabela("Mensagens", mensagens, ["Nome", "E-mail", "Assunto", "Mensagem"], "Nenhuma mensagem.") %}
+    <td>{{ m.nome }}</td><td>{{ m.email }}</td><td>{{ m.assunto }}</td><td>{{ m.texto }}</td>
+  {% endcall %}
+  {% call(e) tabela("Encomendas", encomendas, ["Cliente", "Contato", "Livro", "Autor", "Status"], "Nenhuma encomenda.") %}
+    <td>{{ e.nome }}</td><td>{{ e.email }}{% if e.telefone %}<br>{{ e.telefone }}{% endif %}</td><td>{{ e.titulo_livro }}</td><td>{{ e.autor }}</td><td>{{ e.status }}</td>
+  {% endcall %}
+  {% call(i) tabela("Inscritos no clube", inscricoes, ["Nome", "E-mail", "Gênero favorito"], "Nenhum inscrito.") %}
+    <td>{{ i.nome }}</td><td>{{ i.email }}</td><td>{{ i.genero_favorito }}</td>
+  {% endcall %}
+</div>
+{% endblock %}

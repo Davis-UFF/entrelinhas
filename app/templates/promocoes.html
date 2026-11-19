@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% block title %}Promoções do Mês - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Promoções do Mês", "Combos, cupons e descontos especiais para você aproveitar") }}
+<div class="page-content">
+  <section>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for p in promocoes %}
+        <div class="col">
+          <div class="promo-card">
+            <span class="promo-badge">{{ p.selo }}</span>
+            <h3>{{ p.titulo }}</h3>
+            <p>{{ p.descricao }}</p>
+            <p class="promo-validade">{{ p.validade }}</p>
+          </div>
+        </div>
+      {% else %}
+        <p>Nenhuma promoção ativa no momento.</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section>
+    <p class="text-muted">As promoções são sujeitas a alteração e disponibilidade de estoque.</p>
+    <a class="btn-accent" href="{{ url_for('main.contato') }}">Fale Conosco</a>
+  </section>
+</div>
+{% endblock %}

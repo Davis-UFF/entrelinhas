@@ -1,0 +1,39 @@
+{# Renderiza um campo do Flask-WTF no padrão Bootstrap, com erros de validação. #}
+{% macro campo(f, rows=5) %}
+  <div class="mb-3">
+    {{ f.label(class="form-label") }}
+    {% set classe = "form-control is-invalid" if f.errors else "form-control" %}
+    {% if f.type == "TextAreaField" %}
+      {{ f(class=classe, rows=rows) }}
+    {% elif f.type == "SelectField" %}
+      {{ f(class=classe.replace("form-control", "form-select")) }}
+    {% else %}
+      {{ f(class=classe) }}
+    {% endif %}
+    {% for erro in f.errors %}
+      <div class="invalid-feedback d-block">{{ erro }}</div>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro banner(titulo, subtitulo) %}
+  <div class="page-banner">
+    <h1>{{ titulo }}</h1>
+    <p>{{ subtitulo }}</p>
+  </div>
+{% endmacro %}
+
+{# Tabela do painel admin. A 1ª coluna (Data) é automática; o bloco {% call(item) %} desenha as demais células de cada linha. #}
+{% macro tabela(titulo, itens, colunas, vazio) %}
+  <section>
+    <h2>{{ titulo }} ({{ itens|length }})</h2>
+    <div class="table-responsive"><table class="table table-sm">
+      <thead><tr><th>Data</th>{% for c in colunas %}<th>{{ c }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for item in itens %}
+          <tr><td>{{ item.criada_em.strftime('%d/%m/%Y %H:%M') }}</td>{{ caller(item) }}</tr>
+        {% else %}<tr><td colspan="{{ colunas|length + 1 }}">{{ vazio }}</td></tr>{% endfor %}
+      </tbody>
+    </table></div>
+  </section>
+{% endmacro %}

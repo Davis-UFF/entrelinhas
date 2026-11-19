@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% block title %}Serviços &amp; Café - Livraria Entrelinhas{% endblock %}
+{% block content %}
+{{ banner("Serviços & Café", "Livros, encomendas, clube de leitura e um café literário à sua espera") }}
+<div class="page-content">
+  <section>
+    <div class="cards-grid">
+      {% for s in servicos %}
+        <article class="card-destaque">
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.descricao }}</p>
+        </article>
+      {% else %}
+        <p>Nenhum serviço cadastrado ainda.</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section>
+    <h2>Quer aproveitar?</h2>
+    <p>Encomende um título, entre para o clube ou confira as promoções do mês.</p>
+    <a class="btn-accent" href="{{ url_for('main.encomendas') }}">Encomendar um Livro</a>
+    <a class="btn-accent" href="{{ url_for('main.clube') }}">Entrar no Clube</a>
+    <a class="btn-accent" href="{{ url_for('main.promocoes') }}">Ver Promoções</a>
+  </section>
+</div>
+{% endblock %}
