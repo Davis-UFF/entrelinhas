@@ -18,11 +18,11 @@ Links da entrega:
 **Componentes:**
 
 * Davis Esmael
-* Débora Barbosa
 * João Pedro Souza
 * João Victor Amaral
 * Pedro de Araujo Salgado Lopes
 * Rafael Lucio Carvalho
+
 
 **Divisão de tarefas na implementação:**
 
