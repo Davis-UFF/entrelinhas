@@ -1,4 +1,3 @@
-"""Painel administrativo simples (HTTP Basic) para consultar o que foi gravado."""
 import hmac
 from functools import wraps
 
@@ -19,7 +18,7 @@ def admin_required(view):
     @wraps(view)
     def wrapper(*args, **kwargs):
         senha = current_app.config["ADMIN_PASSWORD"]
-        if not senha:  # sem senha configurada, o painel fica desligado
+        if not senha:  # sem senha, painel desligado
             abort(404)
         auth = request.authorization
         usuario_ok = auth and hmac.compare_digest(auth.username or "", current_app.config["ADMIN_USER"])

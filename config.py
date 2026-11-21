@@ -1,4 +1,3 @@
-"""Configuração da aplicação, lida de variáveis de ambiente (.env via python-dotenv)."""
 import os
 from pathlib import Path
 
@@ -11,7 +10,7 @@ load_dotenv(BASE_DIR / ".env")
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "dev-chave-insegura-troque-no-env")
 
-    # Caminho absoluto evita problemas no PythonAnywhere (diretório de trabalho diferente)
+    # caminho absoluto, por causa do PythonAnywhere
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL") or (
         "sqlite:///" + str(BASE_DIR / "instance" / "entrelinhas.db")
     )

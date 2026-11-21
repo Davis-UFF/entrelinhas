@@ -1,4 +1,4 @@
-{# Renderiza um campo do Flask-WTF no padrão Bootstrap, com erros de validação. #}
+{# campo de formulário com os erros embaixo #}
 {% macro campo(f, rows=5) %}
   <div class="mb-3">
     {{ f.label(class="form-label") }}
@@ -23,7 +23,7 @@
   </div>
 {% endmacro %}
 
-{# Tabela do painel admin. A 1ª coluna (Data) é automática; o bloco {% call(item) %} desenha as demais células de cada linha. #}
+{# tabela do admin: a coluna Data já vem pronta, o call preenche o resto #}
 {% macro tabela(titulo, itens, colunas, vazio) %}
   <section>
     <h2>{{ titulo }} ({{ itens|length }})</h2>

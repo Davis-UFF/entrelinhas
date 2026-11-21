@@ -1,9 +1,6 @@
-// ============================================
-// Status de funcionamento da loja ("Aberto agora" / "Fechado")
-// ============================================
+// status da loja (aberto agora / fechado)
 
-// Horário da loja por dia da semana (0 = domingo ... 6 = sábado), em horas
-// decimais. Fonte única de verdade: altere aqui se o horário mudar.
+// horários por dia da semana (0 = domingo ... 6 = sábado)
 const HORARIOS = {
   0: null,                        // Domingo: fechado
   1: { abre: 9, fecha: 20 },
@@ -16,7 +13,7 @@ const HORARIOS = {
 
 const NOMES_DIAS = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
 
-// Data/hora atual no fuso da loja (Niterói), independente do fuso do visitante.
+// hora atual no fuso de Niterói
 function agoraNaLoja() {
   const partes = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Sao_Paulo",
@@ -49,7 +46,7 @@ function calcularStatus() {
     return { aberto: false, dia, texto: `Fechado · abre hoje às ${formatarHora(hoje.abre)}` };
   }
 
-  // Procura o próximo dia com expediente
+  // procura o próximo dia aberto
   for (let i = 1; i <= 7; i++) {
     const proximo = (dia + i) % 7;
     if (HORARIOS[proximo]) {
@@ -70,7 +67,7 @@ function atualizarStatusLoja() {
     el.classList.toggle("fechado", !status.aberto);
   });
 
-  // Destaca na tabela a linha correspondente ao dia de hoje
+  // marca a linha de hoje na tabela
   document.querySelectorAll(".table-horarios tbody tr[data-dias]").forEach((linha) => {
     const dias = linha.dataset.dias.split(",").map(Number);
     linha.classList.toggle("hoje", dias.includes(status.dia));
@@ -82,20 +79,17 @@ if (document.querySelector(".status-loja, .table-horarios")) {
   setInterval(atualizarStatusLoja, 60 * 1000);
 }
 
-// ============================================
-// Formulários (contato, encomenda, clube): contador de caracteres e
-// rascunho automático. A validação real é feita no servidor (Flask-WTF);
-// aqui só melhoramos a experiência de quem está digitando.
-// ============================================
+// formulários: contador de caracteres e rascunho no navegador
+// (a validação de verdade é no servidor)
 
 document.querySelectorAll("form[data-rascunho]").forEach((form) => {
   const chave = `entrelinhas:rascunho-${form.dataset.rascunho}`;
-  // Ignora o token CSRF e o botão: só campos que o usuário preenche
+  // só os campos que a pessoa preenche (sem o token csrf)
   const campos = form.querySelectorAll("input:not([type=hidden]), textarea, select");
   const textarea = form.querySelector("textarea[maxlength]");
   const contador = document.getElementById("contador-mensagem");
 
-  // localStorage pode estar indisponível (modo privado), então tudo é protegido.
+  // o localStorage pode não funcionar (aba anônima), por isso os try/catch
   const rascunho = {
     salvar() {
       try {
@@ -108,7 +102,7 @@ document.querySelectorAll("form[data-rascunho]").forEach((form) => {
       try {
         const dados = JSON.parse(localStorage.getItem(chave) || "{}");
         campos.forEach((c) => {
-          // Não sobrescreve o que o servidor devolveu após um erro de validação
+          // não sobrescreve o que o servidor devolveu com erro
           if (!c.value && typeof dados[c.name] === "string") c.value = dados[c.name];
         });
       } catch (e) { /* rascunho corrompido: ignora */ }
@@ -125,8 +119,7 @@ document.querySelectorAll("form[data-rascunho]").forEach((form) => {
     contador.classList.toggle("text-danger", usados >= textarea.maxLength);
   }
 
-  // Após um POST bem sucedido o servidor redireciona (sem erros na página):
-  // se não há mensagens de erro, descartamos o rascunho antigo.
+  // depois de enviar com sucesso, apaga o rascunho
   if (!form.querySelector(".invalid-feedback")) {
     if (document.querySelector(".alert-success")) rascunho.limpar();
   }

@@ -1,4 +1,3 @@
-"""Fábrica da aplicação Flask da Livraria Entrelinhas."""
 import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
@@ -12,7 +11,6 @@ from .extensions import csrf, db
 
 
 def configurar_logs(app):
-    """Logs em arquivo rotativo (logs/app.log) e no console, para debug."""
     nivel = getattr(logging, app.config["LOG_LEVEL"], logging.DEBUG)
     formato = logging.Formatter(
         "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d %(message)s"
@@ -36,7 +34,7 @@ def configurar_logs(app):
 
 
 def garantir_pasta_do_banco(app):
-    """SQLite não cria pastas: garante que o diretório do arquivo .db exista (ex.: instance/)."""
+    # o sqlite não cria a pasta sozinho
     url = make_url(app.config["SQLALCHEMY_DATABASE_URI"])
     if url.drivername.startswith("sqlite") and url.database not in (None, "", ":memory:"):
         Path(url.database).parent.mkdir(parents=True, exist_ok=True)
@@ -61,7 +59,7 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
     app.register_blueprint(admin_bp)
 
-    from . import models  # noqa: F401  (registra os models antes do create_all)
+    from . import models  # noqa: F401 (precisa importar antes do create_all)
 
     with app.app_context():
         db.create_all()
@@ -69,7 +67,7 @@ def create_app(config_class=Config):
         if not app.config.get("TESTING"):
             from .cli import popular
 
-            popular()  # só insere se as tabelas estiverem vazias
+            popular()  # só se o banco estiver vazio
 
     @app.after_request
     def log_requisicao(resposta):

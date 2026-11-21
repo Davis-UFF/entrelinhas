@@ -78,7 +78,7 @@ def test_clube_bloqueia_email_duplicado(client):
 
 
 def test_integrity_error_reexibe_formulario(client, monkeypatch):
-    """Simula a corrida em que o commit falha por e-mail duplicado."""
+    # faz o commit falhar como se o e-mail já existisse
     from sqlalchemy.exc import IntegrityError
 
     def commit_falha():
@@ -98,17 +98,13 @@ def test_admin_exige_autenticacao(client):
 
 
 def test_app_cria_pasta_do_banco_com_config_normal(tmp_path):
-    """Config normal (não a de teste) com banco em pasta que ainda não existe.
-
-    Reproduz um clone novo ou o PythonAnywhere, onde instance/ não existe.
-    Falha com 'unable to open database file' se o app não criar a pasta.
-    """
+    # simula um clone novo, onde instance/ ainda não existe
     from sqlalchemy import inspect
 
     from config import Config
 
     class ConfigTemporaria(Config):
-        # Mesmo formato que DATABASE_URL teria no .env; a subpasta NÃO existe ainda.
+        # a subpasta ainda não existe
         SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(tmp_path / "instance" / "teste.db")
         LOG_DIR = tmp_path / "logs"
 

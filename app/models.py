@@ -1,4 +1,3 @@
-"""Models (SQLAlchemy) da Livraria Entrelinhas."""
 from datetime import datetime, timezone
 
 from .extensions import db
@@ -9,8 +8,6 @@ def agora():
 
 
 class Servico(db.Model):
-    """Serviço oferecido pela livraria (venda, encomenda, clube, café)."""
-
     __tablename__ = "servicos"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -23,8 +20,6 @@ class Servico(db.Model):
 
 
 class Promocao(db.Model):
-    """Oferta, combo ou cupom exibido na página de promoções."""
-
     __tablename__ = "promocoes"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -39,8 +34,6 @@ class Promocao(db.Model):
 
 
 class Mensagem(db.Model):
-    """Mensagem enviada pelo formulário de contato."""
-
     __tablename__ = "mensagens"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -55,8 +48,6 @@ class Mensagem(db.Model):
 
 
 class Encomenda(db.Model):
-    """Pedido de um título que não está no acervo."""
-
     __tablename__ = "encomendas"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -74,8 +65,6 @@ class Encomenda(db.Model):
 
 
 class InscricaoClube(db.Model):
-    """Inscrição no Clube de Leitura (e-mail único)."""
-
     __tablename__ = "inscricoes_clube"
 
     id = db.Column(db.Integer, primary_key=True)

@@ -1,4 +1,3 @@
-"""Dados iniciais do site (serviços e promoções)."""
 from .extensions import db
 from .models import Promocao, Servico
 
@@ -17,7 +16,7 @@ PROMOCOES = [
 
 
 def popular():
-    """Insere os dados iniciais se as tabelas estiverem vazias. Retorna (servicos, promocoes) criados."""
+    # só insere se a tabela estiver vazia
     novos_s = novas_p = 0
     if Servico.query.count() == 0:
         for ordem, (titulo, desc) in enumerate(SERVICOS, start=1):

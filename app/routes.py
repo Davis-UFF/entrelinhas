@@ -1,4 +1,3 @@
-"""Rotas públicas do site."""
 from flask import Blueprint, current_app, flash, redirect, render_template, request, url_for
 from sqlalchemy.exc import IntegrityError
 
@@ -16,7 +15,6 @@ HORARIOS = [
 
 
 def tratar_form(form, model, template, sucesso, **contexto):
-    """Fluxo comum dos formulários: valida, grava, avisa e redireciona (padrão PRG)."""
     if form.validate_on_submit():
         dados = {campo: valor for campo, valor in form.data.items() if campo != "csrf_token"}
         registro = model(**dados)
@@ -24,7 +22,7 @@ def tratar_form(form, model, template, sucesso, **contexto):
             db.session.add(registro)
             db.session.commit()
         except IntegrityError:
-            # Corrida: outro pedido gravou o mesmo e-mail entre a validação e o commit
+            # outro pedido pode ter gravado o mesmo e-mail antes do commit
             db.session.rollback()
             current_app.logger.warning("Violação de integridade ao salvar %s", model.__name__)
             form.email.errors.append("Este e-mail já está inscrito.")

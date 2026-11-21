@@ -1,4 +1,3 @@
-"""Formulários (Flask-WTF) da aplicação."""
 from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, Optional, Regexp, ValidationError
@@ -18,12 +17,10 @@ GENEROS = [
 
 
 def limpar(valor):
-    """Filtro: tira espaços das pontas (ignora None)."""
     return valor.strip() if isinstance(valor, str) else valor
 
 
 def limpar_ou_none(valor):
-    """Filtro para campos opcionais: texto vazio vira None (NULL no banco)."""
     return limpar(valor) or None
 
 
@@ -32,8 +29,6 @@ def limpar_email(valor):
 
 
 class PessoaForm(FlaskForm):
-    """Campos que os três formulários têm em comum."""
-
     nome = StringField(
         "Nome", filters=[limpar], validators=[DataRequired("Informe seu nome."), Length(max=100)]
     )
@@ -88,6 +83,6 @@ class ClubeForm(PessoaForm):
     )
 
     def validate_email(self, campo):
-        """Validador inline: o WTForms chama validate_<campo> sozinho."""
+        # o WTForms chama validate_<campo> sozinho
         if InscricaoClube.query.filter_by(email=campo.data).first():
             raise ValidationError("Este e-mail já está inscrito no clube.")
